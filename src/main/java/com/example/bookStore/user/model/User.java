@@ -1,4 +1,4 @@
-package com.example.bookStore.model;
+package com.example.bookStore.user.model;
 
 import jakarta.persistence.*;
 import lombok.*;

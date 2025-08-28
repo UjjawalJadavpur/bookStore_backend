@@ -1,4 +1,4 @@
-package com.example.bookStore.model;
+package com.example.bookStore.user.model;
 
 public enum Role {
     ADMIN,
