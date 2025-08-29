@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserRequestDto {
+public class RegisterRequestDto {
 
     @NotBlank(message = "Name is required")
     private String name;
@@ -21,7 +21,7 @@ public class UserRequestDto {
 
     private String address;
 
-    @NotBlank(message = "Role is required")
+    // Role is optional, backend will default to CUSTOMER
     private String role;  // "ADMIN" or "CUSTOMER"
 
     @NotBlank(message = "Password is required")
