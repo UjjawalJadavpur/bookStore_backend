@@ -32,7 +32,7 @@ public class UserMapper {
         if (user == null) return null;
 
         return UserResponseDto.builder()
-                .id(user.getId())
+//                .id(user.getId())
                 .name(user.getName())
                 .email(user.getEmail())
                 .address(user.getAddress())

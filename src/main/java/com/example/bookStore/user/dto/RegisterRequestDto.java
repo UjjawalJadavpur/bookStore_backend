@@ -20,8 +20,6 @@ public class RegisterRequestDto {
     private String email;
 
     private String address;
-
-    // Role is optional, backend will default to CUSTOMER
     private String role;  // "ADMIN" or "CUSTOMER"
 
     @NotBlank(message = "Password is required")
