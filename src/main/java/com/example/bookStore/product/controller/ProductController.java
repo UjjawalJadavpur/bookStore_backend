@@ -1,33 +1,36 @@
 package com.example.bookStore.product.controller;
 
+import com.example.bookStore.product.dto.ProductRequestDto;
+import com.example.bookStore.product.dto.ProductResponseDto;
 import com.example.bookStore.product.model.Product;
 import com.example.bookStore.product.service.ProductService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/products")
+@RequiredArgsConstructor
 public class ProductController {
 
     private final ProductService productService;
 
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
-
     @PostMapping
-    public Product createProduct(@RequestBody Product product) {
-        return productService.saveProduct(product);
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ProductResponseDto createProduct(@RequestBody ProductRequestDto dto) {
+        return productService.saveProduct(dto);
     }
 
     @GetMapping
-    public List<Product> getAllProducts() {
+    public List<ProductResponseDto> getAllProducts() {
         return productService.getAllProducts();
     }
 
     @GetMapping("/{id}")
-    public Product getProductById(@PathVariable Long id) {
+    public ProductResponseDto getProductById(@PathVariable Long id) {
         return productService.getProductById(id);
     }
+
 }

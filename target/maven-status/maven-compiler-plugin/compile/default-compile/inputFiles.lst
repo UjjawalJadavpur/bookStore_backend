@@ -1,10 +1,15 @@
 /home/test/Documents/bookStore_backend/src/main/java/com/example/bookStore/BookStoreApplication.java
 /home/test/Documents/bookStore_backend/src/main/java/com/example/bookStore/category/controller/CategoryController.java
+/home/test/Documents/bookStore_backend/src/main/java/com/example/bookStore/category/dto/CategoryRequestDto.java
+/home/test/Documents/bookStore_backend/src/main/java/com/example/bookStore/category/dto/CategoryResponseDto.java
 /home/test/Documents/bookStore_backend/src/main/java/com/example/bookStore/category/model/Category.java
 /home/test/Documents/bookStore_backend/src/main/java/com/example/bookStore/category/repository/CategoryRepository.java
 /home/test/Documents/bookStore_backend/src/main/java/com/example/bookStore/category/service/CategoryService.java
 /home/test/Documents/bookStore_backend/src/main/java/com/example/bookStore/config/SecurityConfig.java
 /home/test/Documents/bookStore_backend/src/main/java/com/example/bookStore/product/controller/ProductController.java
+/home/test/Documents/bookStore_backend/src/main/java/com/example/bookStore/product/dto/ProductRequestDto.java
+/home/test/Documents/bookStore_backend/src/main/java/com/example/bookStore/product/dto/ProductResponseDto.java
+/home/test/Documents/bookStore_backend/src/main/java/com/example/bookStore/product/mapper/ProductMapper.java
 /home/test/Documents/bookStore_backend/src/main/java/com/example/bookStore/product/model/Product.java
 /home/test/Documents/bookStore_backend/src/main/java/com/example/bookStore/product/model/ProductStatus.java
 /home/test/Documents/bookStore_backend/src/main/java/com/example/bookStore/product/repository/ProductRepository.java

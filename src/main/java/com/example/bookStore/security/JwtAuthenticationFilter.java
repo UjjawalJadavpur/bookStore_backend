@@ -5,6 +5,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
@@ -29,7 +30,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         String authHeader = request.getHeader("Authorization");
 
-        // Skip if no token or not starting with "Bearer "
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
             return;
@@ -37,12 +37,16 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         String accessToken = authHeader.substring(7);
 
-        // Validate Access Token ONLY
         if (jwtService.validateAccessToken(accessToken)) {
             String username = jwtService.extractUsernameFromAccessToken(accessToken);
 
+            // 👇 Now directly use role from JWT, no "ROLE_" prefix
+            String role = jwtService.extractRoleFromAccessToken(accessToken);
+
+            SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role);
+
             UsernamePasswordAuthenticationToken authentication =
-                    new UsernamePasswordAuthenticationToken(username, null, Collections.emptyList());
+                    new UsernamePasswordAuthenticationToken(username, null, Collections.singletonList(authority));
 
             authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
             SecurityContextHolder.getContext().setAuthentication(authentication);

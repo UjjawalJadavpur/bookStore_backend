@@ -48,9 +48,10 @@ public class JwtService {
         return parseClaims(token, accessKey).getSubject();
     }
 
-    public String extractUsernameFromRefreshToken(String token) {
-        return parseClaims(token, refreshKey).getSubject();
+    public String extractRoleFromAccessToken(String token) {
+        return parseClaims(token, accessKey).get("role", String.class);
     }
+
 
     private Claims parseClaims(String token, Key key) {
         return Jwts.parserBuilder()

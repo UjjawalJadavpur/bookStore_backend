@@ -18,12 +18,9 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryId;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 20)
     private String name;
 
-    @Column(columnDefinition = "TEXT")
-    private String description;
-
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    private List<Product> products;  // make sure Product is imported from the correct package
+    private List<Product> products;
 }
